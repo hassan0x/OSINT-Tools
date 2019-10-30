@@ -1,0 +1,51 @@
+apt-get update
+apt-get dist-upgrade
+
+apt-get install apache2
+a2enmod rewrite
+systemctl restart apache2
+
+nano /etc/apache2/apache2.conf
+<Directory /var/www/>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+</Directory>
+systemctl restart apache2
+
+apt-get install php libapache2-mod-php php-mysqli php-gd
+apt-get install mariadb-server php-mysql
+sudo apt-get install php-xml php-curl php-mbstring
+
+service mysql start
+service apache2 start
+mysql -u root
+> use mysql;
+> update user set authentication_string=PASSWORD("WebAppPentest") where user="root";
+> update user set plugin="mysql_native_password" where user="root";
+> flush privileges;
+> exit;
+
+nano /etc/php/7.3/apache2/php.ini
+error_reporting = E_ALL
+display_errors = On
+allow_url_fopen = On
+allow_url_include = On
+
+chmod -R 755 WebAppPentest
+chmod 777 CSRF
+chmod 777 fileUpload/uploads
+chmod 777 /var/log/apache2/access.log
+
+cd /var/www/html/
+git clone https://github.com/webpwnized/mutillidae
+
+nano /var/www/html/mutillidae/includes/database-config.inc
+
+systemctl enable mysql
+systemctl enable apache2
+
+#install burp
+update-alternatives --config java
+java -jar Loader.jar
+java -Xbootclasspath/p:Loader.jar -jar burpsuite_pro_v1.7.35.jar
