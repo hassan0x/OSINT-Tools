@@ -22,7 +22,7 @@ python SocialFinder.py microsoft.com 50
 ```
 
 ### Extract Metadata
-you can use this tool to search for files related to the company.
+you can use this tool to search for files related to the company, and then you can use tool like exiftool to extract the metadata from this files.
 
 ```
 pip install google
