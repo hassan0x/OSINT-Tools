@@ -1,4 +1,4 @@
-## INFOSEC Tools
+## Intelligence Gatheting Tools
 
 ### This repo has 3 parts:
 - Find Emails.
