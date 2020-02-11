@@ -1,4 +1,4 @@
-## Intelligence Gatheting Tools
+## Intelligence Gathering Tools
 
 ### This repo has 3 parts:
 - Find Emails.
