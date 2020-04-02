@@ -16,9 +16,21 @@ print "Domain:", domain
 print "Count:", count
 print "Start:", start
 print "API Key:", API
-print "#############################################"
+print "----------------------------------------------------------"
 
 hunter = PyHunter(API)
+
+data1 = hunter.email_count(company=domain)
+print "Number of all available emails:", data1['total']
+
+print "----------------------------------------------------------"
+
+data2 = hunter.account_information()
+print "Account Information:-"
+for x,y in data2.items():
+	print x+":", y
+
+print "----------------------------------------------------------"
 
 data = hunter.domain_search(company=domain, limit=count, offset=start)
 
